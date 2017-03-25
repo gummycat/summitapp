@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BBB27908-DCC6-4159-AB81-0F3E7D56860C}</ProjectGuid>
+    <ProjectGuid>{3CC00967-9DA9-4FF1-98D6-94FC158E2C62}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>summitapp.UITests</RootNamespace>
     <AssemblyName>summitapp.UITests</AssemblyName>
@@ -30,18 +30,18 @@
       <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.UITest">
-      <HintPath>..\packages\Xamarin.UITest.2.0.6\lib\Xamarin.UITest.dll</HintPath>
+      <HintPath>..\packages\Xamarin.UITest.1.3.7\lib\Xamarin.UITest.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\iOS\summitapp.iOS.csproj">
-      <Project>{B0894AB2-89AA-45B9-8415-3E1939BC2441}</Project>
+      <Project>{338CE3F9-ED72-46C7-BD3A-CCF52B07C365}</Project>
       <Name>summitapp.iOS</Name>
       <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
       <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Droid\summitapp.Droid.csproj">
-      <Project>{D325738F-45C9-487E-8BF0-ED1885E6376F}</Project>
+      <Project>{F230FDBF-02A0-43F5-A52B-53DE9DDD9F75}</Project>
       <Name>summitapp.Droid</Name>
       <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
       <Private>False</Private>

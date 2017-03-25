@@ -1,29 +1,59 @@
-﻿using Xamarin.Forms;
+﻿using System.Collections.Generic;
+
+using Xamarin.Forms;
 
 namespace summitapp
 {
 	public partial class App : Application
 	{
+		public static bool UseMockDataStore = true;
+		public static string BackendUrl = "https://localhost:5000";
+
+		public static IDictionary<string, string> LoginParameters => null;
+
 		public App()
 		{
 			InitializeComponent();
 
-			MainPage = new summitappPage();
+			if (UseMockDataStore)
+				DependencyService.Register<MockDataStore>();
+			else
+				DependencyService.Register<CloudDataStore>();
+
+			SetMainPage();
 		}
 
-		protected override void OnStart()
+		public static void SetMainPage()
 		{
-			// Handle when your app starts
+			if (!UseMockDataStore && !Settings.IsLoggedIn)
+			{
+				Current.MainPage = new NavigationPage(new LoginPage())
+				{
+					BarBackgroundColor = (Color)Current.Resources["Primary"],
+					BarTextColor = Color.White
+				};
+			}
+			else
+			{
+				GoToMainPage();
+			}
 		}
 
-		protected override void OnSleep()
+		public static void GoToMainPage()
 		{
-			// Handle when your app sleeps
-		}
-
-		protected override void OnResume()
-		{
-			// Handle when your app resumes
+			Current.MainPage = new TabbedPage
+			{
+				Children = {
+					new NavigationPage(new ItemsPage())
+					{
+						Title = "Browse"
+					},
+					new NavigationPage(new AboutPage())
+					{
+						Title = "About"
+					},
+				}
+			};
 		}
 	}
 }
